@@ -10,7 +10,6 @@
 </head>
 <body>
 	<c:import url="navbar.jsp"></c:import>
-		kj/////////////////////////////
 		
 		This is a website for people who care about their community.
 		Apartment Complexes can manage their apartments,...

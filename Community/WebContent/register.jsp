@@ -47,12 +47,12 @@
 			<img alt="140x140" src="http://lorempixel.com/140/140/" class="img-rounded" />
 		</div>
 		<div class="col-md-3 column">
-			<div class= "col-md-3 column input-group">
+			<div class= "column input-group" style="border:solid">
       			<span class="input-group-addon">
        		 		<input type="radio" aria-label="...">       		 		       		 		
       			</span>
       			
-      			<div class="col-md-12" >
+      			<div>
       			<address> <strong>The Park At Lakeline</strong>
       			<br /> 2800 S. Lakeline Blvd.
       			<br /> Cedar Park, TX 78613
@@ -63,11 +63,11 @@
       		</div>     		
 		</div>
 		
-		<div class= "col-md-3 column input-group">
+		<div class= "col-md-3 column input-group" style="border:solid">
       		<span class="input-group-addon">
        		 	<input type="radio" aria-label="...">       		 		       		 		
       		</span>
-      		<div class="col-md-12" >
+      		<div>
       			<address> <strong>The Park At Lakeline</strong>
       			<br /> 2850 S. Lakeline Blvd.
       			<br /> Cedar Park, TX 78613
