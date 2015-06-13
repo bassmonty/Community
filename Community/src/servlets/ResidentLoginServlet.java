@@ -1,4 +1,4 @@
-package com.community.servlets;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class commentsServlet
+ * Servlet implementation class ResidentLoginServlet
  */
-@WebServlet({ "/commentsServlet", "/comments" })
-public class CommentsServlet extends HttpServlet {
+@WebServlet({ "/ResidentLoginServlet", "/residentLogin" })
+public class ResidentLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentsServlet() {
+    public ResidentLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +33,6 @@ public class CommentsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

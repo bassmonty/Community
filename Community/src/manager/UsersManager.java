@@ -1,4 +1,4 @@
-package com.community.databaseManager;
+package manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 import org.apache.derby.client.am.DateTime;
 
-import com.community.domain.User;
+import domain.User;
 
 public class UsersManager {
 
@@ -28,7 +28,7 @@ public class UsersManager {
 			Connection connection;
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("UUID, USERNAME, NAME, PASSWORD, EMAIL from ACC_USER");
+			PreparedStatement ps = connection.prepareStatement("UUID, USERNAME, NAME, PASSWORD, EMAIL from COMM_USER");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
@@ -50,7 +50,39 @@ public class UsersManager {
 		return users;
 	}
 
+	public User findUserWithUsernameAndPassword(String userName, String password) {
+
+		ArrayList<User> theUsers = getUsers();
+
+		// Loop thru the users and find the one who has
+		// the name and email we are looking for and return it.
+		// If they are not found return null.
+		for (User user : theUsers) {
+			if ((user.getUserName().equalsIgnoreCase(userName))
+					&& (user.getPassword().equalsIgnoreCase(password))) {
+				return user;
+			}
+		}
+		// No user found matching name and email
+		return null;
+	}
 	
+	public User findUserWithNameAndEmail(String name, String email) {
+
+		ArrayList<User> thePeople = getUsers();
+
+		// Loop thru the users and find the one who has
+		// the name and email we are looking for and return it.
+		// If they are not found return null.
+		for (User user : thePeople) {
+			if ((user.getName().equalsIgnoreCase(name))
+					&& (user.getEmail().equalsIgnoreCase(email))) {
+				return user;
+			}
+		}
+		// No user found matching name and email
+		return null;
+	}
 
 	public boolean addUser(User aUser)  {
 		// TODO - Put the user in the user db
@@ -104,7 +136,7 @@ public class UsersManager {
 			Connection connection;
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("select UUID, EMAIL, NAME, USERNAME, PASSWORD from ACC_USER where UUID = ?");
+			PreparedStatement ps = connection.prepareStatement("select UUID, EMAIL, NAME, USERNAME, PASSWORD from COMM_USER where UUID = ?");
 			ps.setString(1, theUserID);
 			ResultSet resultSet = ps.executeQuery();
 

@@ -1,4 +1,4 @@
-package com.community.servlets;
+package servlets;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,8 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.community.database.DBManager;
-import com.community.domain.User;
+import manager.UsersManager;
+
+import domain.User;
 
 /**
  * Servlet implementation class LoginServlet
@@ -25,7 +26,7 @@ import com.community.domain.User;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@Resource(name = "jdbc/DB")
+	@Resource(name = "jdbc/MyDB")
 	DataSource ds;
        
     /**
@@ -41,7 +42,42 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		try {
+		String url = "/WEB-INF/login.jsp";
+		
+		String action = request.getParameter("action");
+
+		if (action == null) {
+			url = "/WEB-INF/login.jsp";
+		}
+
+		if (("login").equalsIgnoreCase(action)) {
+
+			String userName = request.getParameter("userName");
+			String password = request.getParameter("password");
+
+			User theFoundUser = null;
+			theFoundUser = new UsersManager(ds).findUserWithUsernameAndPassword(userName, password);
+
+			// If we find the user set the user on the request and forward to the
+			// main page
+			// otherwise send them back to the login page
+			if (theFoundUser != null) {
+				request.setAttribute("user", theFoundUser);
+
+				HttpSession session = request.getSession();
+				session.setAttribute("isLoggedIn", true);
+				
+				url = "/WEB-INF/main.jsp";
+			} else {
+				url = "/WEB-INF/login.jsp";
+			}
+		}
+
+		getServletContext().getRequestDispatcher(url)
+				.forward(request, response);
+		
+		
+/*		try {
 			Connection conn = ds.getConnection();
 			PreparedStatement theQuery = conn
 					.prepareStatement("SELECT * FROM COMMUNITY_USER");
@@ -63,6 +99,7 @@ public class LoginServlet extends HttpServlet {
 
 		getServletContext().getRequestDispatcher(url)
 				.forward(request, response);
+*/	
 	}
 
 	/**
@@ -70,42 +107,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//			String url = "/WEB-INF/login.jsp";
-			
-			String url = "/WEB-INF/main.jsp";
-
-			String action = request.getParameter("action");
-
-			if (action == null) {
-				url = "/Community/login.jsp";
-			}
-
-			if (action.equalsIgnoreCase("login")) {
-
-				String userName = request.getParameter("userName");
-				String name = request.getParameter("name");
-				String password = request.getParameter("password");
-
-				User theFoundUser = DBManager.sharedInstance()
-						.findUserWithUsernameAndPassword(userName, password);
-
-				// If we find the user set the user on the request and forward to the
-				// main page
-				// otherwise send them back to the login page
-				if (theFoundUser != null) {
-					request.setAttribute("user", theFoundUser);
-
-					HttpSession session = request.getSession();
-					session.setAttribute("isLoggedIn", true);
-
-					url = "/WEB-INF/main.jsp";
-				} else {
-					url = "/WEB-INF/login.jsp";
-				}
-			}
-
-			getServletContext().getRequestDispatcher(url)
-					.forward(request, response);
+//			
 		}
 	}
 

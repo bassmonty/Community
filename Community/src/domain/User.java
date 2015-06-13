@@ -1,4 +1,4 @@
-package com.community.domain;
+package domain;
 
 import java.util.UUID;
 
@@ -34,6 +34,11 @@ public class User implements Comparable<User> {
 		this.ID = UUID.fromString(UUIDString);
 		this.email = email;
 		this.name = name;
+		this.userName = userName;
+		this.password = password;
+	}
+	
+	public User(String userName, String password){
 		this.userName = userName;
 		this.password = password;
 	}

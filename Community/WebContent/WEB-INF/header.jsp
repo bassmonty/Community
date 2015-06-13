@@ -18,6 +18,6 @@
 
 <sql:setDataSource dataSource="jdbc/DB" />
 
-<%@ include file="/common-css-javascript.html" %> 	
+<%@ include file="/WEB-INF/common-css-javascript.html" %> 	
 
 <title>${title }</title>

@@ -1,25 +1,23 @@
-package com.community.servlets;
+package servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LogoutServelet
+ * Servlet implementation class IndexServlet
  */
-@WebServlet({ "/LogoutServlet", "/logout" })
-public class LogoutServlet extends HttpServlet {
+@WebServlet({ "/IndexServlet", "/index" })
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public IndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +26,9 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("isLoggedIn", false); 
-		
-		response.sendRedirect("/Community/index.jsp");
+		getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+		return;
 	}
+
 
 }

@@ -1,10 +1,10 @@
-package com.community.database;
+package database;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.UUID;
 
-import com.community.domain.User;
+import domain.User;
 
 public class DBManager {
 
