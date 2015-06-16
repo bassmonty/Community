@@ -5,22 +5,20 @@
 <%@ taglib prefix="fn" 
            uri="http://java.sun.com/jsp/jstl/functions" %>
            
-<c:import url="/header.jsp"></c:import>
+<c:import url="/WEB-INF/header.jsp"></c:import>
 
-<title>Main Page</title>
+<title>Community Network</title>
 </head>
 <body>
-	<c:import url="/navbar.jsp">
+	<c:import url="/WEB-INF/navbar.jsp">
 		<c:param name="isLoggedIn" value="${isLoggedIn }"/>
 	</c:import>
 
 	<c:if test="${sessionScope.isLoggedIn == true}"> 
-		<p class="alert alert-success" role="alert">Logged In!</p>
+		<p class="alert alert-success" role="alert">Welcome, ${user.name}!</p>
 	</c:if>	
 
-
-	<!--  Hello, ${ fn:toUpperCase(user.name) } -->
-	Welcome ${user.name }!
+<%-- 	Welcome ${user.name }! --%>
 	<br/>
 	Your ID is: ${user.ID }<br/>
 	Your email is: ${user.email} <br/>

@@ -1,4 +1,4 @@
-<%@ include file="header.jsp"%>
+<%@ include file="/WEB-INF/header.jsp" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -9,11 +9,13 @@
 <title>List of Communities</title>
 </head>
 <body>
-<c:import url="navbar.jsp"></c:import>
+	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
 Here is a list of the Communites we serve:
 
-<a href="/Community/TheParkAtLakeline">The Park At Lakeline</a></p>
+<br/>
+--------------------------------------------------------
+<a href="http://www.parkatlakeline.com/" target="_blank">The Park At Lakeline</a></p>
 
 </body>
 </html>

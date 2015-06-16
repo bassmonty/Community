@@ -1,4 +1,4 @@
-<%@ include file="header.jsp"%>
+<%@ include file="/WEB-INF/header.jsp" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -9,49 +9,51 @@
 <title>Register</title>
 </head>
 <body>
-	<c:import url="navbar.jsp"></c:import>
-	<%--  <myTags:common-body> --%>
-	<%-- 		<c:import url="/navbar.jsp"></c:import> --%>
+	<c:import url="/WEB-INF/navbar.jsp"></c:import>
+
 	<div>
-		<h2>Which Community are you a part of?</h2>
+		<h2>Join A Community</h2>
 	</div>
 	
 	--------------------------------------------------
 	
-		--------------------------
-	<!-- 	<div class="col-lg-6">
-    <div class="input-group">
-      <span class="input-group-addon">
-        <input type="radio" aria-label="...">
-      </span>
-      <input type="text" class="form-control" aria-label="...">
-    </div>/input-group
-  </div>/.col-lg-6
-</div>/.row -->
-		--------------------------
 		
-		<div class="container">
+<div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<div class="alert alert-dismissable alert-info">
 				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				<strong>Notice!</strong> 
+				<strong>Note!</strong> 
 				We are working on adding more communities to our Community Network. 
 				Thank you for your patience!
-				<a href="/Community/contact-us" class="alert-link">Tell us about your community.</a>
+				<a href="/Community//WEB-INF/contact-us.jsp" class="alert-link">Tell us about your community.</a>
 			</div>
 		</div>
 	</div>
+	
+	
+	
 	<div class="row clearfix">
 		<div class="col-md-3 column">
-			<img alt="140x140" src="http://lorempixel.com/140/140/" class="img-rounded" />
+			<img alt="140x140" src="images/generic-avatar.jpg" class="img-rounded" />
+		
+		<br/>
+		<!-- Profile Picture Upload-->
+			<div class="col-md-offset-1 control-group">
+    			<label for="exampleInputFile">Upload a Profile Picture</label>
+    				<input type="file" id="exampleInputFile">		
+			</div>
 		</div>
+		
+		<h5>Which is your community?</h5>
+		
 		<div class="col-md-3 column">
 			<div class= "column input-group" style="border:solid">
       			<span class="input-group-addon">
        		 		<input type="radio" aria-label="...">       		 		       		 		
       			</span>
       			
+      			      			
       			<div>
       			<address> <strong>The Park At Lakeline</strong>
       			<br /> 2800 S. Lakeline Blvd.
@@ -77,97 +79,11 @@
       	</div>
       		
 	</div>
-		<!-- <div class="col-md-3 column">
-			 <a id="modal-226331" href="#modal-container-226331" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-			
-			<div class="modal fade" id="modal-container-226331" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h4 class="modal-title" id="myModalLabel">
-								Modal title
-							</h4>
-						</div>
-						<div class="modal-body">
-							...
-						</div>
-						<div class="modal-footer">
-							 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
-						</div>
-					</div>
-					
-				</div>
-				
-			</div>
-			
-		</div> -->
-	</div>
 </div>
+
 	
 	--------------------------------------------------
-	
-	
-<!-- 	<div class="col-md-offset-6 col-md-6">
-		<img
-			src="http://blog.apartmentfinder.com/wp-content/uploads/2014/01/meeting-new-people-apartments.jpg"
-			height="300px" width="500px">
-			</div>
-		<hr class="col-md-6" />
-			<div class="col-md-offset-1 col-md-4">
-		<form class="form-horizontal" action="RegistrationServlet"
-			method="post">
-			<input type="hidden" name="action" value="Register User">
 
-			<div class="form-group">
-				<label class="col-md-4">First Name:</label> <input
-					class="form-control" type="text" name="name" required><br />
-				<label class="col-md-4">Last Name:</label><input
-					class="form-control" type="text" name="name" required><br />
-			</div>
-
-			<div class="form-group">
-				<label>Username:</label> <input class="form-control" type="text"
-					name="userName" required><br />
-			</div>
-
-			<div class="form-group">
-				<label>Email:</label> <input class="form-control" type="text"
-					name="email" required><br />
-			</div>
-
-			<div class="form-group">
-				<label>Password:</label> <input class="form-control" type="password"
-					name="password" required><br />
-			</div>
-
-			<div class="form-group">
-				<label>Verify Password:</label> <input class="form-control"
-					type="password" name="verify_password" required><br />
-			</div>
-
-			
-	</div>
-	<label>&nbsp;</label>
-	<input class="btn btn-primary active" type="submit" value="Register"
-		id="submit">
-
-	</form>
-
-	<form>
-		<div class="fileupload fileupload-new" data-provides="fileupload">
-			<div class="fileupload-preview thumbnail"
-				style="width: 200px; height: 150px;"></div>
-			<div>
-				<span class="btn btn-file"><span class="fileupload-new">Select
-						image</span><span class="fileupload-exists">Change</span><input
-					type="file" /></span> <a href="#" class="btn fileupload-exists"
-					data-dismiss="fileupload">Remove</a>
-			</div>
-		</div>
-	</form> -->
-
----------------------------------
 
 	<form class="form-horizontal">
 		<fieldset>
@@ -175,23 +91,24 @@
 		<!-- Form Name -->
 			<legend class="col-md-offset-1">Your Information</legend>
 
-		<!-- First Name Input-->
+
+		<!-- Name Input-->
 			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="firstName">First Name</label>
+				<label class="control-label" for="name">Name</label>
 				<div class="controls">
-					<input id="firstName" name="firstName" type="text" placeholder=""
+					<input id="name" name="name" type="text" placeholder="First Last"
 						class="input-medium" required>
-					<p class="help-block">Enter your first name</p>
+<!-- 					<p class="help-block">Enter your name</p> -->
 				</div>
 			</div>
 
-		<!-- Last Name Input-->
+		<!-- Email Input-->
 			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="lastName">Last Name</label>
+				<label class="control-label" for="email">Email</label>
 				<div class="controls">
-					<input id="lastName" name="lastName" type="text" placeholder=""
+					<input id="email" name="email" type="text" placeholder=""
 						class="input-medium" required>
-					<p class="help-block">Enter your last name</p>
+<!-- 					<p class="help-block">Enter your email</p> -->
 				</div>
 			</div>
 
@@ -201,8 +118,8 @@
 				<div class="controls">
 					<input id="userName" name="userName" type="text" placeholder=""
 						class="input-medium" required>
-					<p class="help-block">Username can contain any letters or
-						numbers, without spaces</p>
+<!-- 					<p class="help-block">Username can contain any letters or -->
+<!-- 						numbers, without spaces</p> -->
 				</div>
 			</div>
 
@@ -212,7 +129,7 @@
 				<div class="controls">
 					<input id="password" name="password" type="password" placeholder=""
 						class="input-medium" required>
-					<p class="help-block">Password should be at least 8 characters</p>
+<!-- 					<p class="help-block">Password should be at least 8 characters</p> -->
 				</div>
 			</div>
 
@@ -227,11 +144,7 @@
 				</div>
 			</div>
 			
-		<!-- Profile Picture Upload-->
-			<div class="col-md-offset-1 control-group">
-    			<label for="exampleInputFile">Upload a Profile Picture</label>
-    				<input type="file" id="exampleInputFile">		
-			</div>
+		
 
 			<!-- Submit -->
 			<div class="col-md-offset-1 control-group">

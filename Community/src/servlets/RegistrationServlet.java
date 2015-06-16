@@ -35,11 +35,9 @@ public class RegistrationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String url = "/index.jsp";
-
-		getServletContext().getRequestDispatcher(url)
-				.forward(request, response);
+		
+		request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request,
+				response);
 	}
 
 	/**
@@ -50,12 +48,12 @@ public class RegistrationServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String url = "/WEB-INF/login.jsp";
+		String url = "/WEB-INF/main.jsp";
 
 		String action = request.getParameter("action");
 
 		if (action == null) {
-			url = "/registration.jsp";
+			url = "/WEB-INF/registration.jsp";
 		}
 
 		if (action.equalsIgnoreCase("register")) {

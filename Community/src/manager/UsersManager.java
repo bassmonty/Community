@@ -28,11 +28,11 @@ public class UsersManager {
 			Connection connection;
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("UUID, USERNAME, NAME, PASSWORD, EMAIL from COMM_USER");
+			PreparedStatement ps = connection.prepareStatement("USERNAME, NAME, PASSWORD, EMAIL from USERS");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				users.add(new User( resultSet.getString("uuid"),
+				users.add(new User( 
 									resultSet.getString("username"),
 									resultSet.getString("name"),
 									resultSet.getString("password"),
@@ -59,7 +59,7 @@ public class UsersManager {
 		// If they are not found return null.
 		for (User user : theUsers) {
 			if ((user.getUserName().equalsIgnoreCase(userName))
-					&& (user.getPassword().equalsIgnoreCase(password))) {
+					&& (user.getPassword().equals(password))) {
 				return user;
 			}
 		}
@@ -95,7 +95,6 @@ public class UsersManager {
 			Connection connection;
 			connection = ds.getConnection();
 
-			String uUUID = aUser.getID().toString();
 			String uemail = aUser.getEmail();
 			String uname = aUser.getName();
 			String uUserName = aUser.getUserName();
@@ -105,10 +104,8 @@ public class UsersManager {
 			Calendar rightNow = Calendar.getInstance();
 			long id = rightNow.getTimeInMillis();
 			
-			PreparedStatement prepStatement = connection.prepareStatement("insert into ACC_USER (uuid, email, name, userName, password) values (?, ?, ?, ?, ?)");
+			PreparedStatement prepStatement = connection.prepareStatement("insert into USERS (email, name, userName, password) values (?, ?, ?, ?)");
 
-			
-			prepStatement.setString(1, uUUID);
 			prepStatement.setString(2, uemail);
 			prepStatement.setString(3, uname);
 			prepStatement.setString(4, uUserName);
@@ -136,13 +133,12 @@ public class UsersManager {
 			Connection connection;
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("select UUID, EMAIL, NAME, USERNAME, PASSWORD from COMM_USER where UUID = ?");
+			PreparedStatement ps = connection.prepareStatement("select EMAIL, NAME, USERNAME, PASSWORD from USERS where ID = ?");
 			ps.setString(1, theUserID);
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				foundUser = new User( 
-									resultSet.getString("uuid"),
 									resultSet.getString("email"),
 									resultSet.getString("name"),
 									resultSet.getString("userName"),

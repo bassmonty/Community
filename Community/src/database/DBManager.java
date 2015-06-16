@@ -17,8 +17,8 @@ public class DBManager {
 
 	private DBManager() {
 		// Intialize the people into the instance
-		this.addUser(new User(UUID.randomUUID(), "pmontoro88@gmail.com", "Paul Montoro", "bassmonty", "hisson"));
-		this.addUser(new User(UUID.randomUUID(), "jakedromgoole@javadude.com", "Jake Dromgoole", "Jdromgoole", "abc"));
+		//this.addUser(new User("pmontoro88@gmail.com", "Paul Montoro", "bassmonty", "hisson"));
+		//this.addUser(new User("jakedromgoole@javadude.com", "Jake Dromgoole", "Jdromgoole", "abc"));
 	}
 
 	// Initialize the sharedInstance singleton here

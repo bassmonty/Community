@@ -4,24 +4,29 @@
 </head>
 
 <body>
-	<c:import url="/navbar.jsp"></c:import>
-	
-	<myTags:Error />
-			
-	<p>Age is: ${age}</p>
+	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
+	<h3>Log in to your Community</h3>
+	
+	<br/>
+	
+	<div>
+	
 	<form action="LoginServlet" method="post">
 		<input type="hidden" name="action" value="login">
-		
-		<label>Name:</label>
-		<input type="text" name="name" required><br/>
-		
+		<div class="form-group">
+		<label>Username:</label>
+		<input class="form-control" type="text" name="userName" required style="width:300px"><br/>
+		</div>
+		<div class="form-group">
 		<label>Password:</label>
-		<input type="password" name="password" required><br/>
-		
+		<input class="form-control" type="password" name="password" required style="width:300px"><br/>
+		</div>
+		<div class="form-group">
 		<label>&nbsp;</label>
-		<input type="submit" value="Login" id="submit">
+		<input class="btn btn-primary active" type="submit" value="Login" id="submit">
+		</div>
 	</form>
-	
+	</div>
 </body>
 </html>
