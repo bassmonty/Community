@@ -18,23 +18,25 @@ public class UsersManager {
 	DataSource ds;
 
 	public UsersManager(DataSource ds) {
+		super();
 		this.ds = ds;
 	}
 
-	public ArrayList<User> getUsers() {
+	public ArrayList<User> getUsers() throws SQLException{
 		ArrayList<User> users = new ArrayList<>();
+		Connection connection = null;
 
 		try {
-			Connection connection;
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("USERNAME, NAME, PASSWORD, EMAIL from USERS");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				users.add(new User( 
-									resultSet.getString("username"),
+									resultSet.getInt("id"),
 									resultSet.getString("name"),
+									resultSet.getString("userName"),
 									resultSet.getString("password"),
 									resultSet.getString("email")));
 			}
@@ -52,24 +54,51 @@ public class UsersManager {
 
 	public User findUserWithUsernameAndPassword(String userName, String password) {
 
-		ArrayList<User> theUsers = getUsers();
-
-		// Loop thru the users and find the one who has
-		// the name and email we are looking for and return it.
-		// If they are not found return null.
-		for (User user : theUsers) {
-			if ((user.getUserName().equalsIgnoreCase(userName))
-					&& (user.getPassword().equals(password))) {
-				return user;
+		User foundUser = null;
+		Connection connection = null;
+		
+		try {
+			connection = ds.getConnection();
+			PreparedStatement ps = connection.prepareStatement("select id, name, username, password, email from Users where username = ? and password = ?");
+			ps.setString(1, userName);
+			ps.setString(2, password);
+			
+			ResultSet resultSet = ps.executeQuery();
+			while (resultSet.next()) {
+				foundUser = new User(	resultSet.getInt("id"),
+										resultSet.getString("name"),
+										resultSet.getString("userName"),
+										resultSet.getString("password"),
+										resultSet.getString("email"));
+			}
+			
+			resultSet.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(connection != null) {
+				try {
+					connection.close();
+					
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-		// No user found matching name and email
-		return null;
+		
+		return foundUser;
 	}
 	
 	public User findUserWithNameAndEmail(String name, String email) {
 
-		ArrayList<User> thePeople = getUsers();
+		ArrayList<User> thePeople = null;
+		try {
+			thePeople = getUsers();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Loop thru the users and find the one who has
 		// the name and email we are looking for and return it.
@@ -91,10 +120,12 @@ public class UsersManager {
 		// Example with data from SQL Script
 		// insert into users (name, password) values ('sam', 'abcd');
 		boolean added = false;
+		
+		Connection connection = null;
+		
 		try {
-			Connection connection;
 			connection = ds.getConnection();
-
+			
 			String uemail = aUser.getEmail();
 			String uname = aUser.getName();
 			String uUserName = aUser.getUserName();
@@ -116,11 +147,19 @@ public class UsersManager {
 
 
 			prepStatement.close();
-			connection.close();
 
 			added = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (connection != null) {
+				try {
+					connection.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return added;
@@ -128,17 +167,19 @@ public class UsersManager {
 
 	public User getUserWithID(String theUserID) {
 		User foundUser = null;
-
+		Connection connection = null;
+		
 		try {
-			Connection connection;
+			
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("select EMAIL, NAME, USERNAME, PASSWORD from USERS where ID = ?");
+			PreparedStatement ps = connection.prepareStatement("select ID, EMAIL, NAME, USERNAME, PASSWORD from USERS where ID = ?");
 			ps.setString(1, theUserID);
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				foundUser = new User( 
+									resultSet.getInt("id"),
 									resultSet.getString("email"),
 									resultSet.getString("name"),
 									resultSet.getString("userName"),
@@ -152,7 +193,17 @@ public class UsersManager {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+
 
 		return foundUser;
 	}

@@ -29,10 +29,14 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("isLoggedIn", false); 
 		
-		response.sendRedirect("/Community/index.jsp");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("isLoggedIn", false);
+		session.invalidate();
+		
+		getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+		return;
 	}
 
 }

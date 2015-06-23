@@ -1,27 +1,19 @@
 SET SCHEMA APP;
-
-CREATE TABLE USERS (ID BIGINT PRIMARY KEY NOT NULL, NAME VARCHAR(20) NOT NULL, USERNAME VARCHAR(30) NOT NULL, PASSWORD VARCHAR(16) NOT NULL, EMAIL VARCHAR(80) NOT NULL);
-
-INSERT INTO USERS (ID, NAME, USERNAME, PASSWORD, EMAIL)
-	VALUES (1, 'Paul Montoro', 'bassmonty', 'hisson', 'pmontoro88@gmail.com'),
-	(2, 'Jake Dromgoole', 'jdro', 'abc', 'jake@community.com'),
-	(3, 'Norman Richards', 'normrich', 'abc', 'norman.richards@community.com');
-	(4, 'Greg Saathoff', 'wildwest', 'abc', 'g.saathoff@community.com');
-	(5, 'Chris McCarron', 'mccarron', 'abc', 'chris.mccarron@community.com');
-	(6, 'Kelly Keene', 'keene', 'abc', 'keene@community.com');
-	(7, 'Justin Casey', 'justincasey', 'abc', 'justins@community.com');
-	
 DROP TABLE USERS;
+CREATE TABLE USERS (ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+			NAME VARCHAR(20) NOT NULL, 
+			USERNAME VARCHAR(30) NOT NULL, 
+			PASSWORD VARCHAR(16) NOT NULL, 
+			EMAIL VARCHAR(80) NOT NULL);
 
---INSERT INTO USERS (ID, NAME, PASSWORD, EMAIL)
---	VALUES (2, 'Sally Ride', 'abc', 'sally@nasa.com');
---
---INSERT INTO USERS (ID, NAME, PASSWORD, EMAIL)
---	VALUES (3, 'Jeff Bezos', 'abc', 'jeff.b@amazon.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Paul Montoro', 'bassmonty', 'hisson', 'pmontoro88@gmail.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Jake Dromgoole', 'jdro', 'abc', 'jake@community.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Norman Richards', 'normrich', 'abc', 'norman.richards@community.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Greg Saathoff', 'wildwest', 'abc', 'g.saathoff@community.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Chris McCarron', 'mccarron', 'abc', 'chris.mccarron@community.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Kelly Keene', 'keene', 'abc', 'keene@community.com');
+INSERT INTO USERS (NAME, USERNAME, PASSWORD, EMAIL) VALUES ('Justin Casey', 'justincasey', 'abc', 'justins@community.com');
 
 SELECT * FROM USERS;
-
--- Select an ID
-SELECT * FROM USERS WHERE ID = 3;
--- Select a NAME matching a pattern
-SELECT * FROM USERS WHERE NAME LIKE '%S%';
+SELECT * FROM USERS WHERE ID = 5;
+SELECT * FROM USERS WHERE NAME='Paul Montoro';
