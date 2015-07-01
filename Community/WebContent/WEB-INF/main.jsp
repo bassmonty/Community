@@ -20,9 +20,9 @@
 
 <%-- 	Welcome ${user.name }! --%>
 	<br/>
-	Your ID is: ${user.ID }<br/>
+<%-- 	Your ID is: ${user.ID }<br/>
 	Your email is: ${user.email} <br/>
-	Your UserName is: ${user.userName }<br/>
+	Your UserName is: ${user.userName }<br/> --%>
 
 <%-- 	Logged In User is: ${user.userName} --%>
 

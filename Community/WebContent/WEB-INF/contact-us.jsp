@@ -31,15 +31,17 @@
 						<select id="subject" name="subject">
 						
 							<option value="na" selected="">Choose One:</option>
-							<option value="service">General Customer Service</option>
+							<option value="service">Trouble Logging In</option>
 							<option value="suggestions">Suggestions</option>
-							<option value="product">Product Support</option>
+							<option value="community">Adding a Community</option>
+							<option value="other">Other</option>
 						</select>
 					
 				</div>
 				<div class="form-group">
 					<label>Message</label>
-					<textarea name="message" id="message" rows="8" style="width:400px"></textarea>
+					<textarea name="message" id="message" rows="8" style="width:400px"
+					placeholder="Please be as detailed as possible with your message so we can help as best as we can." ></textarea>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary ">Send</button>

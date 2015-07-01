@@ -12,24 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import manager.CommentsManager;
-import manager.UsersManager;
 import domain.Comments;
-import domain.User;
 
 /**
- * Servlet implementation class ListResidentsServlet
+ * Servlet implementation class EditCommentsServlet
  */
-@WebServlet({ "/ListResidentsServlet", "/listResidents" })
-public class ListResidentsServlet extends HttpServlet {
+@WebServlet({ "/EditCommentsServlet", "/editComments" })
+public class EditCommentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	@Resource(name = "jdbc/MyDB")
+    
+	@Resource (name = "jdbc/MyDB")
 	DataSource ds;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListResidentsServlet() {
+    public EditCommentsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,21 +36,25 @@ public class ListResidentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<User> usersList = null;
-		UsersManager um = new UsersManager(ds);
-		 
+
 		String url = "/WEB-INF/index.jsp";
+		
+		CommentsManager cm = new CommentsManager(ds);
+		Comments comment = null;
+		int ID = new Integer(request.getParameter("ID"));
+		
 		try {	
-			usersList = um.getUsers();
+			comment = cm.getCommentByID(ID);
 			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			//url = "/WEB-INF/index.jsp";
 		}
-		request.setAttribute("listOfUsers", usersList);
-		url = "/WEB-INF/listResidents.jsp";
-		System.out.println(usersList);
+		if (comment != null){
+			request.setAttribute("comment", comment);
+			url = "/WEB-INF/editComment.jsp";
+		}
 		
 		request.getRequestDispatcher(url).forward(request,
 				response);

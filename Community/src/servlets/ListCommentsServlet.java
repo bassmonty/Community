@@ -1,19 +1,29 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+import manager.CommentsManager;
+import domain.Comments;
 
 /**
  * Servlet implementation class commentsServlet
  */
-@WebServlet({ "/commentsServlet", "/comments" })
+@WebServlet({ "/commentsServlet", "/comments", "/listComments" })
 public class ListCommentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@Resource(name = "jdbc/MyDB")
+	DataSource ds;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,7 +36,22 @@ public class ListCommentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/listComments.jsp").forward(request,
+		ArrayList<Comments> commentsList = null;
+		CommentsManager cm = new CommentsManager(ds);
+		 
+		String url = "/WEB-INF/index.jsp";
+		try {	
+			commentsList = cm.getComments();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			//url = "/WEB-INF/index.jsp";
+		}
+		request.setAttribute("listOfComments", commentsList);
+		url = "/WEB-INF/listComments.jsp";
+		System.out.println(commentsList);
+		request.getRequestDispatcher(url).forward(request,
 				response);
 	}
 
