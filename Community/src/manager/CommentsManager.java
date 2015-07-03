@@ -26,7 +26,7 @@ public class CommentsManager {
 		try {
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM COMMENTS");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM COMMENTS ORDER BY ID DESC");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {

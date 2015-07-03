@@ -12,7 +12,7 @@
 	<p style="color:red">${error_username }</p>
 	<div>
 	
-	<form action="LoginServlet" method="get">
+	<form action="LoginServlet" method="POST">
 		<input type="hidden" name="action" value="login">
 		<div class="form-group">
 			<label>Username:</label>

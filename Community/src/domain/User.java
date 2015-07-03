@@ -2,19 +2,21 @@ package domain;
 
 public class User implements Comparable<User> {
 	private int ID;
-	private String email;
 	private String name;
 	private String userName;
 	private String password;
+	private String email;
+	private int communityID;
 
 	public User(int id, String name, String userName,
-			String password, String email) {
+			String password, String email, int communityID) {
 		super();
 		this.ID = id;	
 		this.name = name;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
+		this.communityID = communityID;
 	}
 
 	public User(int id, String userName, String password) {
@@ -63,6 +65,14 @@ public class User implements Comparable<User> {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public int getCommunityID() {
+		return communityID;
+	}
+
+	public void setCommunityID(int communityID) {
+		this.communityID = communityID;
+	}
 
 	@Override
 	public String toString() {
@@ -84,5 +94,6 @@ public class User implements Comparable<User> {
 
 		return sString;
 	}
+
 
 }

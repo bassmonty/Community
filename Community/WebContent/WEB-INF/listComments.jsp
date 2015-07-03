@@ -37,7 +37,10 @@
 		<c:forEach items="${listOfComments }" var="comment">
 			<tr>
 				<td>${comment.ID}</td>
+				
+				<!-- NEED TO GET THIS TO READ AS USERNAME INSTEAD OF USER_ID -->
 				<td>${comment.user_id}</td>
+				
 				<td>${comment.commentTopic}</td>
 				<td>${comment.commentContent}<%-- <c:if test="${comment.user_id=1}"> --%>
 				<td><a class="btn btn-default btn-sm"

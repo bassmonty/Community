@@ -19,8 +19,8 @@ import domain.User;
 /**
  * Servlet implementation class ListResidentsServlet
  */
-@WebServlet({ "/ListResidentsServlet", "/listResidents" })
-public class ListResidentsServlet extends HttpServlet {
+@WebServlet({ "/ListUsersServlet", "/listUsers", "/listResidents" })
+public class ListUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	@Resource(name = "jdbc/MyDB")
@@ -29,7 +29,7 @@ public class ListResidentsServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListResidentsServlet() {
+    public ListUsersServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,7 +51,7 @@ public class ListResidentsServlet extends HttpServlet {
 			//url = "/WEB-INF/index.jsp";
 		}
 		request.setAttribute("listOfUsers", usersList);
-		url = "/WEB-INF/listResidents.jsp";
+		url = "/WEB-INF/listUsers.jsp";
 		System.out.println(usersList);
 		
 		request.getRequestDispatcher(url).forward(request,

@@ -66,4 +66,5 @@ public class Comments implements Comparable<Community> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }

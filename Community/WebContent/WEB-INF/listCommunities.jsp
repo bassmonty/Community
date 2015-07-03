@@ -34,6 +34,29 @@
 					<td>(855) 848-5918</td>
 					<td><a href="http://www.parkatlakeline.com/" target="_blank">http://www.parkatlakeline.com/</a></td>
 				</tr>
+			</tbody>
+		</table>
+	</div>
+			
+			
+			
+			<br/>
+			<br/>
+			
+			
+			<h4 align="center" style="color: red ">These communities will be added to our network soon!</h4>
+			<div class="bs-example" data-example-id="bordered-table">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Phone Number</th>
+					<th>Website</th>
+				</tr>
+			</thead>
+			<tbody>
 				<tr>
 					<th scope="row">2</th>
 					<td>Muir Lake Apartments</td>

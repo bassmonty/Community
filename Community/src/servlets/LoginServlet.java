@@ -30,12 +30,17 @@ public class LoginServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request,
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request,
+				 response);
+	}
+
+	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		/*request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request,
-				response);
-*/
 		String url = "/WEB-INF/login.jsp";
 		User theFoundUser = null;
 		String action = request.getParameter("action");
@@ -49,28 +54,30 @@ public class LoginServlet extends HttpServlet {
 			String userName = request.getParameter("userName");
 			String password = request.getParameter("password");
 
-			
-//			theFoundUser = 
 			theFoundUser = new UsersManager(ds)
 					.findUserWithUsernameAndPassword(userName, password);
 
-			// If we find the user set the user on the request and forward to the main page 
-			//  otherwise send them back to the login page
+			// If we find the user set the user on the request and forward to
+			// the main page
+			// otherwise send them back to the login page
 			if (theFoundUser != null) {
 				request.setAttribute("user", theFoundUser);
 
 				HttpSession session = request.getSession();
 				session.setAttribute("isLoggedIn", true);
 				request.getSession().setAttribute("userName", userName);
-				url = "/WEB-INF/main.jsp";
-				//response.sendRedirect("/Community/main");
+				request.getSession().setAttribute("userID", theFoundUser.getID());
+				url = "/WEB-INF/viewProfile.jsp";
+				// response.sendRedirect("/Community/main");
 			} else {
-				request.setAttribute("error_username", "username or password didn't match with database");
+				request.setAttribute("error_username",
+						"username or password didn't match with database");
 				url = "/WEB-INF/login.jsp";
 			}
 		}
 
-		getServletContext().getRequestDispatcher(url).forward(request, response);
-		
+		getServletContext().getRequestDispatcher(url)
+				.forward(request, response);
+
 	}
 }

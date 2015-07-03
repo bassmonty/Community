@@ -29,16 +29,17 @@ public class UsersManager {
 		try {
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS BY user_ID");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				users.add(new User( 
-									resultSet.getInt("id"),
+									resultSet.getInt("user_ID"),
 									resultSet.getString("name"),
 									resultSet.getString("userName"),
 									resultSet.getString("password"),
-									resultSet.getString("email")));
+									resultSet.getString("email"),
+									resultSet.getInt("community_ID")));
 			}
 
 			resultSet.close();
@@ -59,17 +60,18 @@ public class UsersManager {
 		
 		try {
 			connection = ds.getConnection();
-			PreparedStatement ps = connection.prepareStatement("select id, name, username, password, email from Users where username = ? and password = ?");
+			PreparedStatement ps = connection.prepareStatement("select user_ID, name, username, password, email, community_ID from Users where username = ? and password = ?");
 			ps.setString(1, userName);
 			ps.setString(2, password);
 			
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
-				foundUser = new User(	resultSet.getInt("id"),
+				foundUser = new User(	resultSet.getInt("user_ID"),
 										resultSet.getString("name"),
 										resultSet.getString("userName"),
 										resultSet.getString("password"),
-										resultSet.getString("email"));
+										resultSet.getString("email"),
+										resultSet.getInt("community_ID"));
 			}
 			
 			resultSet.close();
@@ -113,7 +115,7 @@ public class UsersManager {
 		return null;
 	}
 
-	public boolean addUser(User aUser)  {
+	public boolean addUser(User addUser)  {
 		// TODO - Put the user in the user db
 		// FIXME - This has a bug
 
@@ -126,25 +128,25 @@ public class UsersManager {
 		try {
 			connection = ds.getConnection();
 			
-			String uemail = aUser.getEmail();
-			String uname = aUser.getName();
-			String uUserName = aUser.getUserName();
-			String upass = aUser.getPassword();
+			String addName = addUser.getName();
+			String addUserName = addUser.getUserName();
+			String addPassword = addUser.getPassword();
+			String addEmail = addUser.getEmail();
+			int addCommunityID = addUser.getCommunityID();
 			
-			
-			Calendar rightNow = Calendar.getInstance();
-			long id = rightNow.getTimeInMillis();
-			
-			PreparedStatement prepStatement = connection.prepareStatement("insert into USERS (email, name, userName, password) values (?, ?, ?, ?)");
 
-			prepStatement.setString(2, uemail);
-			prepStatement.setString(3, uname);
-			prepStatement.setString(4, uUserName);
-			prepStatement.setString(5, upass);
+			Calendar rightNow = Calendar.getInstance();
+			long timeNow = rightNow.getTimeInMillis();
 			
+			PreparedStatement prepStatement = connection.prepareStatement("insert into USERS (name, userName, password, email, communityID) values (?, ?, ?, ?, ?)");
+
+			prepStatement.setString(3, addName);
+			prepStatement.setString(4, addUserName);
+			prepStatement.setString(5, addPassword);
+			prepStatement.setString(2, addEmail);
+			prepStatement.setInt(5, addCommunityID);			
 			
 			prepStatement.execute();
-
 
 			prepStatement.close();
 
@@ -165,25 +167,26 @@ public class UsersManager {
 		return added;
 	}
 
-	public User getUserWithID(String theUserID) {
-		User foundUser = null;
+	public User findUserWithID(int theUserID) {
+		User theFoundUser = null;
 		Connection connection = null;
 		
 		try {
 			
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("select ID, EMAIL, NAME, USERNAME, PASSWORD from USERS where ID = ?");
-			ps.setString(1, theUserID);
+			PreparedStatement ps = connection.prepareStatement("select user_ID, NAME, USERNAME, PASSWORD, EMAIL, community_ID from USERS where ID = ?");
+			ps.setInt(1, theUserID);
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				foundUser = new User( 
-									resultSet.getInt("id"),
+				theFoundUser = new User( 
+									resultSet.getInt("user_ID"),
 									resultSet.getString("email"),
 									resultSet.getString("name"),
 									resultSet.getString("userName"),
-									resultSet.getString("password"));
+									resultSet.getString("password"),
+									resultSet.getInt("community_ID"));
 									
 			}
 
@@ -205,7 +208,7 @@ public class UsersManager {
 		}
 
 
-		return foundUser;
+		return theFoundUser;
 	}
 
 	

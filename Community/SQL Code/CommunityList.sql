@@ -1,20 +1,21 @@
 SET SCHEMA APP;
 
-CREATE TABLE COMMUNITYLIST (ID BIGINT PRIMARY KEY NOT NULL, NAME VARCHAR(50) NOT NULL, ADDRESS VARCHAR(50) NOT NULL);
+CREATE TABLE COMMUNITYLIST (COMMUNITY_ID INT PRIMARY KEY NOT NULL, NAME VARCHAR(100) NOT NULL, ADDRESS VARCHAR(200) NOT NULL);
 
-INSERT INTO COMMUNITYLIST (ID, NAME, ADDRESS)
+INSERT INTO COMMUNITYLIST (COMMUNITY_ID, NAME, ADDRESS)
 	VALUES (1, 'The Park at Lakeline', '2800 S. Lakeline Blvd. Cedar Park, TX 78613'), 
-	(2, 'The Park at Lakeline', '2850 S. Lakeline Blvd. Cedar Park, TX 78613'),
-	(3, 'Lakeline East Apartments', '2829 S Lakeline Blvd. Cedar Park, TX 78613'),
-	(4, 'Muir Lake Apartments','12600 Avery Ranch Blvd. Cedar Park, TX 78613');
-	(5, 'Sycamore Springs','9801 W Parmer Ln, Austin, TX 78717');
-	(6, 'Lodge at Lakeline Village','2000 S Lakeline Blvd, Cedar Park, TX 78613');
-	(7, 'LakeLine West Apartments','12801 Ridgeline Blvd, Austin, TX 78750');
-	(8, 'Indigo Apartmens','10800 Lakeline Blvd, Austin, TX 78717');
+	(2, 'Muir Lake Apartments', '12600 Avery Ranch Blvd. Cedar Park, TX 78613'),
+	(3, 'Sycamore Springs', '9801 W Parmer Ln, Austin, TX 78717');
+
 	
 DROP TABLE COMMUNITYLIST;
 
 SELECT * FROM COMMUNITYLIST;
+
+SELECT USERS.USER_ID, USERS.NAME, USERS.USERNAME, USERS.EMAIL, COMMUNITYLIST.NAME
+FROM COMMUNITYLIST
+INNER JOIN USERS
+ON COMMUNITYLIST.COMMUNITY_ID=USERS.COMMUNITY_ID;
 
 -- Select an ID
 SELECT * FROM COMMUNITYLIST WHERE ID = 3;
