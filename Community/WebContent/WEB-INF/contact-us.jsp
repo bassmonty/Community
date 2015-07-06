@@ -10,7 +10,7 @@
 <link class="cssdeck" rel="stylesheet"
 	href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.min.css">
 </head>
-<body>
+<body background="images/background-pattern-gray.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
 	<div class="row">

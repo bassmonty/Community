@@ -211,5 +211,49 @@ public class UsersManager {
 		return theFoundUser;
 	}
 
+	public User findUserWithCommunityID(int communityID) {
+		User theFoundUser = null;
+		Connection connection = null;
+		
+		try {
+			
+			connection = ds.getConnection();
+
+			PreparedStatement ps = connection.prepareStatement("select user_ID, NAME, USERNAME, PASSWORD, EMAIL, community_ID from USERS where community_ID = ?");
+			ps.setInt(1, communityID);
+			ResultSet resultSet = ps.executeQuery();
+
+			while (resultSet.next()) {
+				theFoundUser = new User( 
+									resultSet.getInt("user_ID"),
+									resultSet.getString("email"),
+									resultSet.getString("name"),
+									resultSet.getString("userName"),
+									resultSet.getString("password"),
+									resultSet.getInt("community_ID"));
+									
+			}
+
+			resultSet.close();
+			ps.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+
+		return theFoundUser;
+	}
+	
 	
 }

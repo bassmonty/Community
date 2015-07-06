@@ -15,7 +15,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/Community/WEB-INF/index.jsp">CN</a>
+				<a class="navbar-brand" href="/Community/Index">C</a>
 				
 			</div>
 

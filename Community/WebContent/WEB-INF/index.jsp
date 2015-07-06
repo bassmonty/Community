@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Community</title>
 </head>
-<body>
+<body background="images/background-pattern-gray.jpg">
 
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 		
@@ -19,7 +19,7 @@
 			Meet your neighbors! ... Make new friends! ... Build your community!
 		</h3>
 		
-	<img src="images/meet-new-people-community-index.jpg" class="img-responsive" alt="Responsive image" width="50%">
+	<img src="images/meet-new-people-community-index.jpg" class="img-responsive" alt="Responsive image" width="50%" style="image-align:center">
 	
 	
 </body>
