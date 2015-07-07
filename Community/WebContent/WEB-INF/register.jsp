@@ -8,13 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Register</title>
 </head>
-<body background="images/background-pattern-gray.jpg">
+<body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
 	<div>
-		<h2 style="text-align: center;">Join A Community</h2>
+		<h1 style="text-align: center;">Join A Community</h1>
 	</div>
-
 
 	<div class="container">
 		<div class="row clearfix">
@@ -29,37 +28,13 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-6"
+			style="border-radius: 10px; background-color: lightgray">
+			<br />
 
 
-
-		<!-- <div class="row clearfix">
-		<div class="col-md-3 column">
-			<img alt="140x140" src="images/generic-avatar.jpg" class="img-rounded" />
-		
-		<br/>
-		Profile Picture Upload
-			<div class="col-md-offset-1 control-group">
-    			<label for="exampleInputFile">Upload a Profile Picture</label>
-    				<input type="file" id="exampleInputFile">		
-			</div>
-		</div> -->
-
-		<h5>Which is your community?</h5>
-
-
-		<div class="col-md-offset-1 form-group">
-			<label>Select Your Community </label> <select id="subject"
-				name="subject">
-
-				<option value="na" selected="">Choose One:</option>
-				<option value="ParkAtLakeline">Park At Lakeline</option>
-				<option value="MuirLake" disabled>Muir Lake Apartments</option>
-				<option value="SycamoreSprings" disabled>Sycamore Springs</option>
-			</select>
-
-		</div>
-
-		<!-- <div class="col-md-3 column">
+			<!-- <div class="col-md-3 column">
 			<div class= "column input-group" style="border:solid">
       			<span class="input-group-addon">
        		 		<input type="radio" aria-label="...">       		 		       		 		
@@ -90,79 +65,97 @@
       		</div>
       	</div> -->
 
+
+
+			<form class="form-horizontal">
+				<fieldset>
+
+					<!-- Form Name -->
+					<legend>
+						<h3 align="center">Enter Your Information</h3>
+					</legend>
+
+
+
+					<!-- Name Input-->
+					<div class="col-md-offset-1 control-group">
+						<label class="control-label" for="name">Name</label>
+						<div class="controls">
+							<input id="name" name="name" type="text" placeholder="Your Name"
+								class="input-medium" required>
+							<!-- 					<p class="help-block">Enter your name</p> -->
+						</div>
+					</div>
+
+					<!-- Email Input-->
+					<div class="col-md-offset-1 control-group">
+						<label class="control-label" for="email">Email</label>
+						<div class="controls">
+							<input id="email" name="email" type="text" placeholder="Your Email Address"
+								class="input-medium" required>
+							<!-- 					<p class="help-block">Enter your email</p> -->
+						</div>
+					</div>
+
+					<!-- Username Input-->
+					<div class="col-md-offset-1 control-group">
+						<label class="control-label" for="userName">Username</label>
+						<div class="controls">
+							<input id="userName" name="userName" type="text" placeholder="Create a Username"
+								class="input-medium" required>
+							<!-- 					<p class="help-block">Username can contain any letters or -->
+							<!-- 						numbers, without spaces</p> -->
+						</div>
+					</div>
+
+					<!-- Password Input-->
+					<div class="col-md-offset-1 control-group">
+						<label class="control-label" for="password">Password</label>
+						<div class="controls">
+							<input id="password" name="password" type="password"
+								placeholder="Create a Password" class="input-medium" required>
+							<!-- 					<p class="help-block">Password should be at least 8 characters</p> -->
+						</div>
+					</div>
+
+					<!-- Password Verify Input-->
+					<div class="col-md-offset-1 control-group">
+						<label class="control-label" for="password_verify">Verify
+							Password</label>
+						<div class="controls">
+							<input id="password_verify" name="password_verify"
+								type="password" placeholder="Re-type Your Password" class="input-medium" required>
+						</div>
+					</div>
+
+					<div class="col-md-offset-1 control-group">
+						<label class="control-label" for="community">Select Your
+							Community </label>
+						<div class="controls">
+							<select id="community" name="community">
+
+								<option value="na" selected="">Choose One:</option>
+								<option value="ParkAtLakeline">Park At Lakeline</option>
+								<option value="MuirLake" disabled>Muir Lake Apartments</option>
+								<option value="SycamoreSprings" disabled>Sycamore Springs</option>
+							</select>
+						</div>
+					</div>
+
+
+					<!-- Submit -->
+					<div class="col-md-offset-1 control-group" align="right">
+						<label class="control-label" for="register"></label>
+						<div class="controls">
+							<button id="register" name="register" class="btn btn-primary">Register</button>
+						</div>
+						<br/>
+					</div>
+
+				</fieldset>
+			</form>
+		</div>
 	</div>
-
-	<form class="form-horizontal" >
-		<fieldset>
-
-			<!-- Form Name -->
-			<legend class="col-md-offset-1">Your Information</legend>
-
-
-			<!-- Name Input-->
-			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="name">Name</label>
-				<div class="controls">
-					<input id="name" name="name" type="text" placeholder="First Last"
-						class="input-medium" required>
-					<!-- 					<p class="help-block">Enter your name</p> -->
-				</div>
-			</div>
-
-			<!-- Email Input-->
-			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="email">Email</label>
-				<div class="controls">
-					<input id="email" name="email" type="text" placeholder=""
-						class="input-medium" required>
-					<!-- 					<p class="help-block">Enter your email</p> -->
-				</div>
-			</div>
-
-			<!-- Username Input-->
-			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="userName">Username</label>
-				<div class="controls">
-					<input id="userName" name="userName" type="text" placeholder=""
-						class="input-medium" required>
-					<!-- 					<p class="help-block">Username can contain any letters or -->
-					<!-- 						numbers, without spaces</p> -->
-				</div>
-			</div>
-
-			<!-- Password Input-->
-			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="password">Password</label>
-				<div class="controls">
-					<input id="password" name="password" type="password" placeholder=""
-						class="input-medium" required>
-					<!-- 					<p class="help-block">Password should be at least 8 characters</p> -->
-				</div>
-			</div>
-
-			<!-- Password Verify Input-->
-			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="password_verify">Verify
-					Password</label>
-				<div class="controls">
-					<input id="password_verify" name="password_verify" type="password"
-						placeholder="" class="input-medium" required>
-					<p class="help-block">Please retype password</p>
-				</div>
-			</div>
-
-
-
-			<!-- Submit -->
-			<div class="col-md-offset-1 control-group">
-				<label class="control-label" for="register"></label>
-				<div class="controls">
-					<button id="register" name="register" class="btn btn-primary">Register</button>
-				</div>
-			</div>
-</div>
-		</fieldset>
-	</form>
-
+	<div class="col-md-3"></div>
 </body>
 </html>

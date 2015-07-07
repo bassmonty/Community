@@ -9,7 +9,7 @@
 <title>Comment Board</title>
 </head>
 
-<body>
+<body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
 	<h3 align="center">Neighbor Comments</h3>

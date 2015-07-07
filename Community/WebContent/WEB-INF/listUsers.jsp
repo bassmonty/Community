@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>List of Residents</title>
 </head>
-<body>
+<body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
 	<h3 align="center">Residents List</h3>

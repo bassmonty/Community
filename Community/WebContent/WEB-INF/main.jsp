@@ -9,7 +9,7 @@
 
 <title>Community Network</title>
 </head>
-<body>
+<body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp">
 		<c:param name="isLoggedIn" value="${isLoggedIn }"/>
 	</c:import>

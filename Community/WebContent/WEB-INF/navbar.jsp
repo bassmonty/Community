@@ -15,7 +15,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/Community/Index">C</a>
+				<a class="navbar-brand" href="/Community/Index">CN</a>
 				
 			</div>
 
@@ -33,7 +33,7 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/Community/contact-us.jsp">Contact Us</a></li>
+					<li><a href="/Community/contactUs">Contact Us</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">About
 							<span class="caret"></span>
@@ -41,9 +41,9 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/Community/listCommunities">Our Communities</a></li>
 							<li class="divider"></li>
-							<li><a href="/Community/our-mission">Our Mission</a></li>
+							<li><a href="/Community/ourMission">Our Mission</a></li>
 						</ul></li>
-					<li><a href="/Community/LogoutServlet">Logout</a></li>
+					<li><a href="/Community/Logout">Logout</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -65,7 +65,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/Community/index">CN</a>
+				<a class="navbar-brand" href="/Community/Index">CN</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

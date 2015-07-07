@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Your Community</title>
 </head>
-<body>
+<body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
 

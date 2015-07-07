@@ -3,7 +3,7 @@
 <title>Login</title>
 </head>
 
-<body>
+<body background="images/background-pattern-fabric.jpg">
 	<c:import url="/navbar.jsp"></c:import>
 	
 	<myTags:Error />
