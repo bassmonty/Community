@@ -29,6 +29,7 @@
 		</ul>
 		<p>Here's our vision for the future:</p>
 		<ul>
+			<li>Comments will be time stamped for easier communication</li>
 			<li>Residents will be able to upload a profile picture.</li>
 			<li>Residents will be able to add a list of interests to their profiles, creating a new way to connect and bond with their neighbors.</li>
 			<li>Management at your living community will have a bulletin board to post news, events, and updates for residents.</li>

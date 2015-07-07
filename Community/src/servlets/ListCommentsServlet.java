@@ -40,14 +40,23 @@ public class ListCommentsServlet extends HttpServlet {
 		CommentsManager cm = new CommentsManager(ds);
 		 
 		String url = "/WEB-INF/index.jsp";
+		String id = request.getParameter("id");
+		
+		
 		try {	
-			commentsList = cm.getComments();
-			
+			if(id==null){
+				commentsList = cm.getComments();
+			}else{
+				commentsList = cm.getCommentsByUserId(Integer.parseInt(id));	
+				 
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			//url = "/WEB-INF/index.jsp";
 		}
+		
+		
 		request.setAttribute("listOfComments", commentsList);
 		url = "/WEB-INF/listComments.jsp";
 		System.out.println(commentsList);

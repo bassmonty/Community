@@ -14,28 +14,22 @@
 </head>
 <body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style="border-radius: 10px; background-color: lightgray">
+		<br />
+		<p style="color: blue">Hi ${user.name}!</p>
 
-	<p style="color: blue">Hi ${user.name}!</p>
+		<p>We're glad you are a part of our community!</p>
 
-	<p>We're glad you are a part of our community!</p>
+		<p>Here's your information:</p>
+		Your User ID is: ${user.ID } <br /> 
+		Your UserName is: ${user.userName }<br /> 
+		Your Email is: ${user.email} <br /> 
+		<br/>
+		<a class="btn btn-default btn-sm" href="editProfile?id=${user.ID }">Edit
+			Your Info</a>
 
-	<p style="color: blue">Here's your information:</p>
-	Your User ID is: ${user.ID }
-	<br /> Your UserName is: ${user.userName }
-	<br /> Your Email is: ${user.email}
-	<br />
-
-	<a class="btn btn-default btn-sm" href="editProfile?id=${user.ID }">Edit
-		Your Info</a>
-
-	<!-- <div class="col-md-offset-1 control-group">
-				<label class="control-label" for="email">Email</label>
-				<div class="controls">
-					<input id="email" name="email" type="text" placeholder=""
-						class="input-medium" required> -->
-	<!-- 					<p class="help-block">Enter your email</p> -->
-	<!-- </div>
-			</div> -->
-
+	</div>
+	<div class="col-md-4"></div>
 </body>
 </html>

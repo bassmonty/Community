@@ -48,30 +48,34 @@ public class RegistrationServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String url = "/WEB-INF/main.jsp";
+		String url = "/Community/viewProfile";
 
 		String action = request.getParameter("action");
 
 		if (action == null) {
-			url = "/WEB-INF/registration.jsp";
+			url = "/WEB-INF/register.jsp";
 		}
 
 		if (action.equalsIgnoreCase("register")) {
 
-			String userName = request.getParameter("userName");
+			String name = request.getParameter("name");
 			String email = request.getParameter("email");
+			String userName = request.getParameter("userName");
 			String password = request.getParameter("password");
+			String community = request.getParameter("community");
 			
 			if (userName != null) {
-				request.setAttribute("userName", userName);
+				request.setAttribute("name", name);
 				request.setAttribute("email", email);
+				request.setAttribute("userName", userName);
 				request.setAttribute("password", password);
+				request.setAttribute("community", community);
 
 				HttpSession session = request.getSession();
 				session.setAttribute("isRegistered", true);
 				
 
-				url = "/WEB-INF/welcome.jsp";
+				url = "/WEB-INF/viewProfile.jsp";
 			} else {
 				url = "/register.jsp";
 			}

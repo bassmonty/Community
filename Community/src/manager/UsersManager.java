@@ -29,7 +29,8 @@ public class UsersManager {
 		try {
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS BY user_ID");
+			PreparedStatement ps = connection.prepareStatement("SELECT USERS.USER_ID, USERS.NAME, USERS.USERNAME, USERS.PASSWORD, USERS.EMAIL, COMMUNITYLIST.COMMUNITY_ID, COMMUNITYLIST.NAME " +
+			"FROM USERS INNER JOIN COMMUNITYLIST ON COMMUNITYLIST.COMMUNITY_ID=USERS.COMMUNITY_ID ORDER BY USERS.USER_ID");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
@@ -60,7 +61,7 @@ public class UsersManager {
 		
 		try {
 			connection = ds.getConnection();
-			PreparedStatement ps = connection.prepareStatement("select user_ID, name, username, password, email, community_ID from Users where username = ? and password = ?");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS WHERE USERNAME = ? AND PASSWORD = ?");
 			ps.setString(1, userName);
 			ps.setString(2, password);
 			

@@ -26,12 +26,14 @@ public class CommentsManager {
 		try {
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM COMMENTS ORDER BY ID DESC");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM COMMENTS INNER JOIN USERS ON COMMENTS.USER_ID=USERS.USER_ID ORDER BY ID DESC");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
+				System.out.println(resultSet.getString("userName"));
 				comments.add(new Comments(resultSet.getInt("id"), 
 						resultSet.getInt("user_id"),
+						resultSet.getString("userName"),
 						resultSet.getString("commentTopic"), 
 						resultSet.getString("commentContent")));
 			}
@@ -55,23 +57,24 @@ public class CommentsManager {
 		return comments;
 	}
 
-	public Comments findCommentWithUserId(int user_ID) {
-
-		Comments foundComment = null;
+	public ArrayList<Comments> getCommentsByUserId(int user_ID) {
+		ArrayList<Comments> listOfComments = new ArrayList<>();
 		Connection connection = null;
 
 		try {
 			connection = ds.getConnection();
 			PreparedStatement ps = connection
-					.prepareStatement("select id, user_id, commenttopic, commentcontent from COMMENTS where id = ?, user_id = ?, commenttopic = ?, commentcontent = ?");
+					.prepareStatement("SELECT COMMENTS.ID, USERS.USER_ID, USERS.USERNAME, COMMENTS.COMMENTTOPIC, COMMENTS.COMMENTCONTENT" +
+			" FROM COMMENTS INNER JOIN USERS ON COMMENTS.USER_ID=USERS.USER_ID WHERE USERS.USER_ID = ?");
 			ps.setInt(1, user_ID);
 
 			ResultSet resultSet = ps.executeQuery();
 			while (resultSet.next()) {
-				foundComment = new Comments(resultSet.getInt("id"),
+				listOfComments.add(new Comments(resultSet.getInt("id"),
 						resultSet.getInt("user_ID"),
+						resultSet.getString("userName"),
 						resultSet.getString("commentTopic"),
-						resultSet.getString("commentContent"));
+						resultSet.getString("commentContent")));
 			}
 
 			resultSet.close();
@@ -89,7 +92,7 @@ public class CommentsManager {
 			}
 		}
 
-		return foundComment;
+		return listOfComments;
 	}
 
 	public Comments getCommentByID(int theID) throws SQLException {
@@ -104,15 +107,16 @@ public class CommentsManager {
 	
 			
 			ps.setInt(1, theID);
-			ResultSet rs= ps.executeQuery();
+			ResultSet resultSet= ps.executeQuery();
 			
-			while (rs.next()){
-				commentByID = new Comments(rs.getInt("ID"), 
-						rs.getInt("user_id"), 
-						rs.getString("commentTitle"), 
-						rs.getString("commentContent"));
+			while (resultSet.next()){
+				commentByID = new Comments(resultSet.getInt("ID"), 
+						resultSet.getInt("user_id"), 
+						resultSet.getString("userName"),
+						resultSet.getString("commentTitle"), 
+						resultSet.getString("commentContent"));
 			}
-			rs.close();
+			resultSet.close();
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

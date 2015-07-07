@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="col-md-3"></div>
-	
+
 	<div class="row clearfix; col-md-8">
 		<div class="col-md-9" align="left">
 			<div class="alert alert-dismissable alert-info">
@@ -34,32 +34,36 @@
 	</div>
 	<div class="col-md-1"></div>
 
-	<div class="row">
-		<div class="col-md-3"></div>
+	<form action="MAILTO:pmontoro88@gmail.com" method="post"
+		enctype="text/plain">
+		<div class="row">
+			<div class="col-md-3"></div>
 
-		<div class="col-md-6" style="border-radius: 10px; background-color: lightgray">
-			<div class="form-group">
-				<label>Name</label> <input type="text" style="width: 50%"
-					placeholder="Your Name">
+			<div class="col-md-6"
+				style="border-radius: 10px; background-color: lightgray">
+				<div class="form-group">
+					<label>Name</label> <input type="text" style="width: 50%"
+						placeholder="Your Name">
+				</div>
+
+				<div class="form-group">
+					<label>Email Address</label> <input type="text" style="width: 50%"
+						placeholder="Your email address">
+				</div>
+
+				<div class="form-group">
+					<label>Message</label>
+					<textarea name="message" id="message" rows="8" style="width: 100%"
+						placeholder="Please be as detailed as possible with your message so we can help as best as we can."></textarea>
+				</div>
+				<div class="form-group" align="right">
+					<button type="submit" class="btn btn-primary">Send</button>
+				</div>
+
 			</div>
 
-			<div class="form-group">
-				<label>Email Address</label> <input type="text" style="width: 50%"
-					placeholder="Your email address">
-			</div>
-
-			<div class="form-group">
-				<label>Message</label>
-				<textarea name="message" id="message" rows="8" style="width: 100%"
-					placeholder="Please be as detailed as possible with your message so we can help as best as we can."></textarea>
-			</div>
-			<div class="form-group" align="right">
-				<button type="submit" class="btn btn-primary">Send</button>
-			</div>
-
+			<div class="col-md-3"></div>
 		</div>
-		
-		<div class="col-md-3"></div>
-	</div>
+	</form>
 </body>
 </html>

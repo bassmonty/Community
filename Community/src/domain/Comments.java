@@ -3,14 +3,16 @@ package domain;
 public class Comments implements Comparable<Community> {
 	private int ID;
 	private int user_id;
+	private String userName;
 	private String commentTopic;
 	private String commentContent;
 
-	public Comments(int id, int user_id, String commentTopic,
+	public Comments(int id, int user_id, String userName, String commentTopic,
 			String commentContent) {
 		super();
 		this.ID = id;
 		this.user_id = user_id;
+		this.userName = userName;
 		this.commentTopic = commentTopic;
 		this.commentContent = commentContent;
 
@@ -32,6 +34,14 @@ public class Comments implements Comparable<Community> {
 		this.user_id = user_id;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	public String getCommentTopic() {
 		return commentTopic;
 	}
@@ -48,12 +58,12 @@ public class Comments implements Comparable<Community> {
 		this.commentContent = commentContent;
 	}
 
-	
+
 	@Override
 	public String toString() {
-		return "Comments [ID=" + ID + ", user_id=" + user_id
-				+ ", commentTopic=" + commentTopic + ", commentContent="
-				+ commentContent + "]";
+		return "Comments [ID=" + ID + ", user_id=" + user_id + ", userName="
+				+ userName + ", commentTopic=" + commentTopic
+				+ ", commentContent=" + commentContent + "]";
 	}
 
 	// Implements the Comparable Interface

@@ -19,8 +19,8 @@
 			<th>NAME</th>
 			<th>USERNAME</th>
 			<th>EMAIL</th>
-			<th></th>
-			<th></th>
+			<th>COMMUNITY</th>
+			<th>USER COMMENTS</th>
 		</tr>
 
 		<c:forEach items="${listOfUsers }" var="user">
@@ -29,6 +29,7 @@
 				<td>${user.name}</td>
 				<td>${user.userName}</td>
 				<td>${user.email}</td>
+				<td>${community.name}</td>
 				<td>
 					<form action="listComments" method="get">
 						<input type="hidden" name="user_ID" value="${ comments.user_ID}=?">
@@ -38,7 +39,7 @@
 				</td>
 
 				<td><a class="btn btn-primary btn-sm"
-					href="listComments?id=${comment.user_ID }">${user.name }'s
+					href="listComments?id=${user.ID }">${user.name }'s
 						Comments</a></td>
 
 

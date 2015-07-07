@@ -39,7 +39,7 @@
 				<td>${comment.ID}</td>
 				
 				<!-- NEED TO GET THIS TO READ AS USERNAME INSTEAD OF USER_ID -->
-				<td>${comment.user_id}</td>
+				<td>${comment.userName}</td>
 				
 				<td>${comment.commentTopic}</td>
 				<td>${comment.commentContent}<%-- <c:if test="${comment.user_id=1}"> --%>
