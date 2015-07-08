@@ -26,8 +26,6 @@
 		Your UserName is: ${user.userName }<br /> 
 		Your Email is: ${user.email} <br /> 
 		<br/>
-		<a class="btn btn-default btn-sm" href="editProfile?id=${user.ID }">Edit
-			Your Info</a>
 
 	</div>
 	<div class="col-md-4"></div>

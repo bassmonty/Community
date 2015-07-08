@@ -26,7 +26,7 @@
 				<ul class="nav navbar-nav">
 
 					<li><a href="/Community/viewProfile">Profile</a></li>
-					<li><a href="/Community/viewCommunity">Community</a></li>
+					<!-- <li><a href="/Community/viewCommunity">Community</a></li> -->
 					<li><a href="/Community/listUsers">Residents</a></li>
 					<!-- <li><a href="/Community/WEB-INF/communityActivities.jsp">Our Activities</a></li> -->
 					<li><a href="/Community/listComments">Comments</a>

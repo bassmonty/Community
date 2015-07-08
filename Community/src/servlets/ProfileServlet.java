@@ -37,29 +37,23 @@ public class ProfileServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/viewProfile.jsp").forward(request, response);
-		return;
 
-//		HttpSession session = request.getSession();
-//
-//		User theUser = null;
-//		UsersManager um = new UsersManager(ds);
-//		int theUserID = (Integer) session.getAttribute("ID");
-//
-//		String url = "/WEB-INF/index.jsp";
-//		try {
-//			theUser = um.findUserWithID(theUserID);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			// url = "/WEB-INF/index.jsp";
-//		}
-//		request.setAttribute("theUser", theUser);
-//		url = "/WEB-INF/viewProfile.jsp";
-//		System.out.println(theUser);
-//		
-//		request.getRequestDispatcher(url).forward(request, response);
+		HttpSession session = request.getSession();
+
+		User theUser = null;
+		UsersManager um = new UsersManager(ds);
+		int theUserID = (Integer) session.getAttribute("userID");
+		
+		try {
+			theUser = um.findUserWithID(theUserID);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("user", theUser);
+		System.out.println(theUser);
+		
+		request.getRequestDispatcher("/WEB-INF/viewProfile.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,

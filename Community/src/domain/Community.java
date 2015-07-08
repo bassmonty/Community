@@ -12,6 +12,10 @@ public class Community implements Comparable<Community> {
 		this.address = address;
 	}
 
+	public Community() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getID() {
 		return ID;
 	}

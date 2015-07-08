@@ -28,6 +28,8 @@
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="col-md-3"></div>
 		<div class="col-md-6"
 			style="border-radius: 10px; background-color: lightgray">
@@ -76,11 +78,19 @@
 						required>
 
 						<option value="na" selected="">Choose One:</option>
-						<option value="ParkAtLakeline">Park At Lakeline</option>
-						<option value="MuirLake" disabled>Muir Lake Apartments</option>
-						<option value="SycamoreSprings" disabled>Sycamore Springs</option>
+						<c:forEach var="community" items="${communities}">
+						<option value="${community.ID}">${community.name}</option>
+						</c:forEach>
 					</select>
 				</div>
+
+				<!-- <div class="form-group">
+					<label>Community:</label> <input class="form-control"
+						style="width: 60%; font-size: 20;" type="text" name="community_ID"
+						value = "Park at Lakeline" readonly>
+
+						
+				</div> -->
 
 				<div class="form-group" align="right">
 					<label>&nbsp;</label> <input class="btn btn-primary active"

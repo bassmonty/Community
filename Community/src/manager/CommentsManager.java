@@ -103,7 +103,8 @@ public class CommentsManager {
 		try {
 			connection = ds.getConnection();
 			
-			PreparedStatement ps = connection.prepareStatement("select * from Comments where id = ?");
+			PreparedStatement ps = connection.prepareStatement("SELECT COMMENTS.ID, USERS.USER_ID, USERS.USERNAME, COMMENTS.COMMENTTOPIC, COMMENTS.COMMENTCONTENT" +
+			" FROM COMMENTS INNER JOIN USERS ON COMMENTS.USER_ID=USERS.USER_ID WHERE COMMENTS.ID = ?");
 	
 			
 			ps.setInt(1, theID);
@@ -113,7 +114,7 @@ public class CommentsManager {
 				commentByID = new Comments(resultSet.getInt("ID"), 
 						resultSet.getInt("user_id"), 
 						resultSet.getString("userName"),
-						resultSet.getString("commentTitle"), 
+						resultSet.getString("commentTopic"), 
 						resultSet.getString("commentContent"));
 			}
 			resultSet.close();
@@ -133,18 +134,18 @@ public class CommentsManager {
 		return commentByID;
 	}
 	
-	public boolean addComment(int user_id, String commentTitle, String commentContent) throws SQLException {
+	public boolean addComment(int user_id, String commentTopic, String commentContent) throws SQLException {
 		boolean addedComment = false;
 		Connection connection = null;
 		
 		try {
 			connection = ds.getConnection();
 			
-			PreparedStatement ps = connection.prepareStatement("INSERT INTO COMMENTS (USER_ID, COMMENTTITLE, COMMENTCONTENT) VALUES (?, ?, ?) ");
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO COMMENTS (USER_ID, COMMENTTOPIC, COMMENTCONTENT) VALUES (?, ?, ?) ");
 	
 			
 			ps.setInt(1, user_id);
-			ps.setString(2, commentTitle);
+			ps.setString(2, commentTopic);
 			ps.setString(3, commentContent);
 
 			int updatedCount = ps.executeUpdate();
@@ -173,11 +174,11 @@ public class CommentsManager {
 		try {
 			connection = ds.getConnection();
 			
-			PreparedStatement ps = connection.prepareStatement("update CommentList set user_id = ?, commenttopic = ?, commentcontent = ? where id = ?");
-			ps.setInt(1, c.getUser_id());
-			ps.setString(2, c.getCommentTopic());
-			ps.setString(3, c.getCommentContent());
-			ps.setInt(4, c.getID());
+			PreparedStatement ps = connection.prepareStatement("update Comments set commenttopic = ?, commentcontent = ? where id = ?");
+			
+			ps.setString(1, c.getCommentTopic());
+			ps.setString(2, c.getCommentContent());
+			ps.setInt(3, c.getID());
 
 			int updatedCount = ps.executeUpdate();
 			if(updatedCount >=1) {
@@ -205,7 +206,7 @@ public class CommentsManager {
 		try {
 			connection = ds.getConnection();
 			
-			PreparedStatement ps = connection.prepareStatement("delete from CommentList where id = ?");
+			PreparedStatement ps = connection.prepareStatement("delete from Comments where id = ?");
 			ps.setInt(1, theID);
 
 			int updatedCount = ps.executeUpdate();
@@ -226,5 +227,6 @@ public class CommentsManager {
 		}
 		return deletedComment;
 	}
+
 	
 }

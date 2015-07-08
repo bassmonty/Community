@@ -133,19 +133,19 @@ public class UsersManager {
 			String addUserName = addUser.getUserName();
 			String addPassword = addUser.getPassword();
 			String addEmail = addUser.getEmail();
-			int addCommunityID = addUser.getCommunityID();
+			int addCommunity_ID = addUser.getCommunity_ID();
 			
 
-			Calendar rightNow = Calendar.getInstance();
-			long timeNow = rightNow.getTimeInMillis();
+//			Calendar rightNow = Calendar.getInstance();
+//			long timeNow = rightNow.getTimeInMillis();
 			
-			PreparedStatement prepStatement = connection.prepareStatement("insert into USERS (name, userName, password, email, communityID) values (?, ?, ?, ?, ?)");
+			PreparedStatement prepStatement = connection.prepareStatement("insert into USERS (name, userName, password, email, community_ID) values (?, ?, ?, ?, ?)");
 
-			prepStatement.setString(3, addName);
-			prepStatement.setString(4, addUserName);
-			prepStatement.setString(5, addPassword);
-			prepStatement.setString(2, addEmail);
-			prepStatement.setInt(5, addCommunityID);			
+			prepStatement.setString(1, addName);
+			prepStatement.setString(2, addUserName);
+			prepStatement.setString(3, addPassword);
+			prepStatement.setString(4, addEmail);
+			prepStatement.setInt(5, addCommunity_ID);			
 			
 			prepStatement.execute();
 
@@ -176,17 +176,17 @@ public class UsersManager {
 			
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("select user_ID, NAME, USERNAME, PASSWORD, EMAIL, community_ID from USERS where ID = ?");
+			PreparedStatement ps = connection.prepareStatement("select user_ID, NAME, USERNAME, PASSWORD, EMAIL, community_ID from USERS where user_ID = ?");
 			ps.setInt(1, theUserID);
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				theFoundUser = new User( 
 									resultSet.getInt("user_ID"),
-									resultSet.getString("email"),
 									resultSet.getString("name"),
 									resultSet.getString("userName"),
 									resultSet.getString("password"),
+									resultSet.getString("email"),
 									resultSet.getInt("community_ID"));
 									
 			}

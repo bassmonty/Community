@@ -17,7 +17,7 @@
 		<h1 align="center">Contact Us</h1>
 	</div>
 
-	<div class="col-md-3"></div>
+	<!-- <div class="col-md-3"></div>
 
 	<div class="row clearfix; col-md-8">
 		<div class="col-md-9" align="left">
@@ -32,16 +32,47 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-1"></div>
+	<div class="col-md-1"></div> -->
 
-	<form action="MAILTO:pmontoro88@gmail.com" method="post"
-		enctype="text/plain">
-		<div class="row">
-			<div class="col-md-3"></div>
+	<div class="row">
+		<div class="col-md-3"></div>
 
-			<div class="col-md-6"
-				style="border-radius: 10px; background-color: lightgray">
-				<div class="form-group">
+		<div class="col-md-6"
+			style="border-radius: 10px; background-color: lightgray">
+
+			<h3 align="center">About Me</h3>
+
+			<p>
+				Hi I'm Paul. I'm from the San Francisco Bay area. I recently moved
+				to Austin to pursue some entrepreneurial endeavors. I've been
+				heavily involved in the music industry, the food industry, private
+				business, and real estate over the last decade. I've lived in
+				four states and have traveled the entire North American continent.
+				Over time, I've come to realize that no matter how "connected"
+				people become, most still remain rather isolated within their own
+				immediate communities. That's how this Community Network was
+				born!<br /><br/> This application is designed to create bonds between
+				neighbors. I believe people should know, and trust their neighbors!
+			</p>
+
+			<h3 align="center">Contact</h3>
+			<p>
+				We are here to answer any questions you may have about our Community
+				Network. Let us know if there's something you think we can
+				do better to help grow your connections or expand your own
+				connections with your neighbors. Reach out to us and we'll
+				respond as soon as we can. <p/>
+			<h5 align="center">pmontoro88@gmail.com</h5>
+			<p align="center"> or call me at <p/>
+			<h5 align="center">650-207-6223</h5>
+			<p> I would be happy to get back to you as soon as possible!
+			I hope you find our Community Network useful! (Please don't
+			hesitate to leave positive feedback too!)
+			</p>
+
+
+			-
+			<!-- <div class="form-group">
 					<label>Name</label> <input type="text" style="width: 50%"
 						placeholder="Your Name">
 				</div>
@@ -58,12 +89,11 @@
 				</div>
 				<div class="form-group" align="right">
 					<button type="submit" class="btn btn-primary">Send</button>
-				</div>
+				</div> -->
 
-			</div>
-
-			<div class="col-md-3"></div>
 		</div>
-	</form>
+
+		<div class="col-md-3"></div>
+	</div>
 </body>
 </html>

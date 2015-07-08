@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -19,19 +20,19 @@ public class CommunitiesManager {
 		this.ds = ds;
 	}
 	
-	public ArrayList<Community> getCommunity() throws SQLException{
+	public ArrayList<Community> getCommunities() throws SQLException{
 		ArrayList<Community> communities = new ArrayList<>();
 		Connection connection = null;
 
 		try {
 			connection = ds.getConnection();
 
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM COMMUNITYLIST");
+			PreparedStatement ps = connection.prepareStatement("SELECT COMMUNITY_ID, NAME, ADDRESS FROM COMMUNITYLIST");
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				communities.add(new Community( 
-									resultSet.getInt("id"),
+									resultSet.getInt("community_ID"),
 									resultSet.getString("name"),
 									resultSet.getString("address")));
 			}
@@ -92,3 +93,4 @@ public class CommunitiesManager {
 	}
 	
 }
+

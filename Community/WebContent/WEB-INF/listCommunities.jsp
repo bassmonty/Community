@@ -11,7 +11,7 @@
 <body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
-	<h1 align="center">Community List</h1>
+	<h1 align="center">Our Communities</h1>
 	<div class="col-md-12">
 		<div class="bs-example" data-example-id="bordered-table"
 			style="background-color: lightgray" align="center">
@@ -37,13 +37,10 @@
 			</table>
 		</div>
 
-
-
 		<br /> <br />
 
-
-		<h4 align="center" style="color: red">These communities will be
-			added to our network soon!</h4>
+		<h3 align="center" style="color: red; background-color: lightgray">These
+			communities will be added to our network soon!</h3>
 		<div class="bs-example" data-example-id="bordered-table"
 			style="background-color: lightgray">
 			<table class="table table-bordered">
@@ -80,17 +77,6 @@
 			</table>
 		</div>
 	</div>
-
-
-	<!-- <p><a href="http://apartments.naproperties.com/texas/cedar-park/lakeline-east" target="_blank">Lakeline East Apartments</a></p>
-	
-		<p><a href="http://www.lodgeatlakeline.com/" target="_blank">Lodge at Lakeline</a></p>
-	
-		<p><a href="http://apartments.naproperties.com/texas/cedar-park/lakeline-west" target="_blank">Lakeline West</a></p>
-
-		<p><a href="http://www.indigoapts.com/" target="_blank">Indigo Apartments</a></p>
- -->
-
 
 </body>
 </html>

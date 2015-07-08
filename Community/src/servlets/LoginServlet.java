@@ -65,8 +65,9 @@ public class LoginServlet extends HttpServlet {
 
 				HttpSession session = request.getSession();
 				session.setAttribute("isLoggedIn", true);
-				request.getSession().setAttribute("userName", userName);
-				request.getSession().setAttribute("userID", theFoundUser.getID());
+				session.setAttribute("userName", userName);
+				session.setAttribute("userID", theFoundUser.getID());
+//				url = "/Community/viewProfile";
 				url = "/WEB-INF/viewProfile.jsp";
 				// response.sendRedirect("/Community/main");
 			} else {

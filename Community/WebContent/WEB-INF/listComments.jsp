@@ -12,51 +12,61 @@
 <body background="images/background-pattern-fabric.jpg">
 	<c:import url="/WEB-INF/navbar.jsp"></c:import>
 
-	<h3 align="center">Neighbor Comments</h3>
+	<h1 align="center">Neighbor Comments</h1>
 
 	<%-- <c:out value="${listOfComments }"></c:out> --%>
 
-	<table class="table table-hover">
-		<tr>
-			<th>ID</th>
-			<th>USER</th>
-			<th>TOPIC</th>
-			<th>COMMENTS</th>
-			<th></th>
-			<th>
-				<form action="addComment" method="post">
-					<input type="hidden" name="ID" value="${ comments.ID}"> <input
-						class="btn btn-primary btn-sm" type="submit" value="Add Comment"
-						id="submit">
-				</form>
-			</th>
+	<div class="col-md-1"></div>
+	<div class="col-md-10"
+		style="border-radius: 10px; background-color: lightgray">
+		<div align="right">
+			<form action="addComment" method="get">
+				<input class="btn btn-primary btn-sm" type="submit"
+					value="Add Comment" id="submit">
+			</form>
+		</div>
 
-
-		</tr>
-
-		<c:forEach items="${listOfComments }" var="comment">
+		<table class="table table-hover">
 			<tr>
-				<td>${comment.ID}</td>
-				
-				<!-- NEED TO GET THIS TO READ AS USERNAME INSTEAD OF USER_ID -->
-				<td>${comment.userName}</td>
-				
-				<td>${comment.commentTopic}</td>
-				<td>${comment.commentContent}<%-- <c:if test="${comment.user_id=1}"> --%>
-				<td><a class="btn btn-default btn-sm"
-					href="editComment?id=${comments.ID }">Edit</a></td>
-				<td>
-					<form action="deleteComment" method="post">
-						<input type="hidden" name="ID" value="${ comments.ID}"> <input
-							class="btn btn-danger btn-sm" type="submit" value="Delete"
-							id="submit">
-					</form>
-				</td>
-				<%-- </c:if> --%>
-			</tr>
-		</c:forEach>
-	</table>
+				<th>ID</th>
+				<th>USER</th>
+				<th>TOPIC</th>
+				<th>COMMENTS</th>
+				<th></th>
+				<!-- <th>
+				<form action="addComment" method="get">
+					<input class="btn btn-primary btn-sm" type="submit"
+						value="Add Comment" id="submit">
+				</form>
+			</th> -->
 
+
+			</tr>
+
+			<c:forEach items="${listOfComments }" var="comment">
+				<tr>
+					<td>${comment.ID}</td>
+
+					<!-- NEED TO GET THIS TO READ AS USERNAME INSTEAD OF USER_ID -->
+					<td>${comment.userName}</td>
+
+					<td>${comment.commentTopic}</td>
+					<td>${comment.commentContent}<%-- <c:if test="${comment.user_id=1}"> --%>
+					<td><a class="btn btn-default btn-sm"
+						href="editComments?id=${comment.ID }">Edit</a></td>
+					<td>
+						<form action="deleteComment" method="post">
+							<input type="hidden" name="id" value="${ comment.ID}"> <input
+								class="btn btn-danger btn-sm" type="submit" value="Delete"
+								id="submit">
+						</form>
+					</td>
+					<%-- </c:if> --%>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+	<div class="col-md-1"></div>
 </body>
 </body>
 </html>

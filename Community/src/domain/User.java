@@ -6,17 +6,27 @@ public class User implements Comparable<User> {
 	private String userName;
 	private String password;
 	private String email;
-	private int communityID;
+	private int community_ID;
 
 	public User(int id, String name, String userName,
-			String password, String email, int communityID) {
+			String password, String email, int community_ID) {
 		super();
 		this.ID = id;	
 		this.name = name;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
-		this.communityID = communityID;
+		this.community_ID = community_ID;
+	}
+	
+	public User(String name, String userName,
+			String password, String email, int community_ID){
+		super();
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.community_ID = community_ID;
 	}
 
 	public User(int id, String userName, String password) {
@@ -24,6 +34,10 @@ public class User implements Comparable<User> {
 		this.userName = userName;
 		this.password = password;
 		
+	}
+
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getID() {
@@ -66,18 +80,19 @@ public class User implements Comparable<User> {
 		this.password = password;
 	}
 	
-	public int getCommunityID() {
-		return communityID;
+	public int getCommunity_ID() {
+		return community_ID;
 	}
 
-	public void setCommunityID(int communityID) {
-		this.communityID = communityID;
+	public void setCommunity_ID(int community_ID) {
+		this.community_ID = community_ID;
 	}
 
 	@Override
 	public String toString() {
-		return "User [ID=" + ID + ", email=" + email + ", name=" + name
-				+ ", userName=" + userName + ", password=" + password + "]";
+		return "User [ID=" + ID + ", name=" + name + ", userName=" + userName
+				+ ", password=" + password + ", email=" + email
+				+ ", communityID=" + community_ID + "]";
 	}
 
 	// Implements the Comparable Interface

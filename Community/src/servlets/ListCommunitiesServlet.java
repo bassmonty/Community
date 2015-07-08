@@ -26,18 +26,11 @@ public class ListCommunitiesServlet extends HttpServlet {
 	@Resource(name = "jdbc/MyDB")
 	DataSource ds;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public ListCommunitiesServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -46,7 +39,7 @@ public class ListCommunitiesServlet extends HttpServlet {
 
 		String url = "/WEB-INF/index.jsp";
 		try {
-			communityList = cym.getCommunity();
+			communityList = cym.getCommunities();
 
 		} catch (Exception e) {
 			e.printStackTrace();
